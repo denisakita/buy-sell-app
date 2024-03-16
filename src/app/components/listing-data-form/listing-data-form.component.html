@@ -1,1 +1,15 @@
-<p>listing-data-form works!</p>
+  <form [formGroup]="listingFG" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name</label>
+      <input id="name" name="name" formControlName="name"/>
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <input id="description" name="description" formControlName="description"/>
+    </div>
+    <div>
+      <label for="price">Price</label>
+      <input id="price" name="price" type="number" formControlName="price"/>
+    </div>
+    <button type="submit">Edit Listing</button>
+  </form>
