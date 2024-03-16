@@ -1,7 +1,9 @@
-export interface Listing {
-  id:string,
-  name:string,
-  description:string,
-  price:number
-
+export class Listing {
+  constructor(
+    public id:string = '',
+    public name:string = '',
+    public description:string = '',
+    public price:number = 0,
+  ) {
+  }
 }
