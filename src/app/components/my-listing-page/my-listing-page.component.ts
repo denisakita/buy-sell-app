@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Listing} from "../models/types";
-import {fakeListing} from "../../assets/mock/fake-data";
+import {Listing} from "../../models/types";
+import {fakeListing} from "../../../assets/mock/fake-data";
 
 @Component({
   selector: 'app-my-listing-page',
@@ -8,7 +8,8 @@ import {fakeListing} from "../../assets/mock/fake-data";
   styleUrl: './my-listing-page.component.css'
 })
 export class MyListingPageComponent implements OnInit {
-  listings:Listing[] =[];
+  listings: Listing[] = [];
+
   constructor() {
   }
 
@@ -16,7 +17,7 @@ export class MyListingPageComponent implements OnInit {
     this.listings = fakeListing;
   }
 
-  onDeleteClicked(listingId:string){
+  onDeleteClicked(listingId: string) {
     alert(`Deleting your listing with id ${listingId}`);
-}
+  }
 }

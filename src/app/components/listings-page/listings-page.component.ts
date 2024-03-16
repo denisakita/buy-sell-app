@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AppModule} from "../app.module";
-import {Listing} from "../models/types";
-import {fakeListing} from "../../assets/mock/fake-data";
+import {Listing} from "../../models/types";
+import {fakeListing} from "../../../assets/mock/fake-data";
 
 @Component({
   selector: 'app-listings-page',

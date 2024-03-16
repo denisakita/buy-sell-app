@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {fakeListing} from '../../assets/mock/fake-data';
-import {Listing} from "../models/types";
+import {Listing} from "../../models/types";
+import {fakeListing} from "../../../assets/mock/fake-data";
+
 
 @Component({
   selector: 'app-listing-detail-page',

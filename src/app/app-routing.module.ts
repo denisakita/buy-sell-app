@@ -1,11 +1,12 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
-import {ListingsPageComponent} from "./listings-page/listings-page.component";
-import {ListingDetailPageComponent} from "./listing-detail-page/listing-detail-page.component";
-import {ContactPageComponent} from "./contact-page/contact-page.component";
-import {EditListingPageComponent} from "./edit-listing-page/edit-listing-page.component";
-import {MyListingPageComponent} from "./my-listing-page/my-listing-page.component";
-import {NewListingPageComponent} from "./new-listing-page/new-listing-page.component";
+import {
+  ContactPageComponent,
+  EditListingPageComponent,
+  ListingDetailPageComponent,
+  ListingsPageComponent, MyListingPageComponent, NewListingPageComponent
+} from "./components";
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'listings', pathMatch: 'full'},
