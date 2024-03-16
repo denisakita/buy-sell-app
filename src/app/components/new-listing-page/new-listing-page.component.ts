@@ -26,13 +26,7 @@ export class NewListingPageComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.listingFG.valid) {
-      const newListing: Listing = this.listingFG.value;
-
-      alert('Creating a new listing...');
-      this.router.navigateByUrl('/my-listings');
-    } else {
-      alert('Please fill out all required fields.');
-    }
-  }
+    alert('Saving Changes');
+    this.router.navigateByUrl('/my-listings')
+  };
 }

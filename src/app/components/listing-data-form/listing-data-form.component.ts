@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {Listing} from "../../models/types";
 
 @Component({
@@ -11,6 +11,11 @@ import {Listing} from "../../models/types";
 export class ListingDataFormComponent implements OnInit {
   listingFG: FormGroup = new FormGroup({})
 
+
+  @Input() buttonText = '';
+  @Output() onSubmit = new EventEmitter<Listing>();
+  @Input() currentListingFG: FormGroup = new FormGroup({})
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -18,22 +23,11 @@ export class ListingDataFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.listingFG = this.fb.group({
-      name: ['', Validators.required],
-      description: [''],
-      price: [0, Validators.min(0)]
-    });
+    this.listingFG = this.currentListingFG;
   }
 
-  onSubmit() {
-    if (this.listingFG.valid) {
-      const newListing: Listing = this.listingFG.value;
-
-      alert('Edit listing...');
-      this.router.navigateByUrl('/my-listings');
-    } else {
-      alert('Please fill out all required fields.');
-    }
+  onButtonClick() {
+    this.onSubmit.emit(this.listingFG.value);
   }
 
 }

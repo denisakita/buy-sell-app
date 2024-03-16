@@ -1,4 +1,4 @@
-  <form [formGroup]="listingFG" (ngSubmit)="onSubmit()">
+  <form [formGroup]="listingFG" (ngSubmit)="onButtonClick()">
     <div>
       <label for="name">Name</label>
       <input id="name" name="name" formControlName="name"/>
@@ -11,5 +11,5 @@
       <label for="price">Price</label>
       <input id="price" name="price" type="number" formControlName="price"/>
     </div>
-    <button type="submit">Edit Listing</button>
+    <button type="submit">{{buttonText}}</button>
   </form>
