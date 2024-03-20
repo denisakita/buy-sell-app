@@ -2,33 +2,43 @@ import {Listing} from "../../app/models/types";
 
 export const fakeListing: Listing[] = [
   {
-    "id": '1',
+    "id": 1,
     "name": "Smartphone",
     "description": "Brand new smartphone with latest features.",
-    "price": 599.99
+    "price": 599.99,
+    "views": 0,
+    "user_id": 12,
   },
   {
-    "id": '2',
+    "id": 2,
     "name": "Laptop",
     "description": "Powerful laptop for work and entertainment.",
-    "price": 999.99
+    "price": 999.99,
+    "views": 0,
+    "user_id": 12,
   },
   {
-    "id": '3',
+    "id": 3,
     "name": "Headphones",
     "description": "High-quality headphones with noise cancellation.",
-    "price": 149.99
+    "price": 149.99,
+    "views": 0,
+    "user_id": 12,
   },
   {
-    "id": ' 4',
+    "id": 4,
     "name": "Smartwatch",
     "description": "Smartwatch with fitness tracking and notifications.",
-    "price": 199.99
+    "price": 199.99,
+    "views": 0,
+    "user_id": 12,
   },
   {
-    "id": '5',
+    "id": 5,
     "name": "Wireless Speaker",
     "description": "Portable wireless speaker with rich sound.",
-    "price": 79.99
+    "price": 79.99,
+    "views": 0,
+    "user_id": 12,
   }
 ]
