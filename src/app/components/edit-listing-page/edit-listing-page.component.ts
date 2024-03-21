@@ -26,7 +26,7 @@ export class EditListingPageComponent implements OnInit {
       description: ['', Validators.required],
       price: ['', Validators.required]
     });
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     const list = fakeListing.find(listing => listing?.id === id);
     if (list) {
       this.listing = list;

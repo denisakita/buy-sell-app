@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Listing} from "../../models/types";
 import {fakeListing} from "../../../assets/mock/fake-data";
+import {ListingsService} from "../../service";
 
 
 @Component({
@@ -16,12 +17,13 @@ export class ContactPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private listingsService:ListingsService
   ) {
   }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     const list = fakeListing.find(listing => listing?.id === id);
     if (list) {
       this.listing = list; // Assigning the found listing to the class property
