@@ -1,27 +1,71 @@
-# BuySellApp
+# Angular Full-Stack Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.0.
+Welcome to the Angular Full-Stack Project! This project is designed to help you learn how to build a full-stack Angular-powered website from scratch. In this project, we'll be creating an Angular 17 front end and writing a back end in Node.js using hapi. We'll also add PostgreSQL to our back end, connect the front and back ends, add Firebase Authentication to our project, and finally, deploy our full-stack application to the cloud.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To get started with this project, follow these steps:
 
-## Code scaffolding
+1. Clone this repository to your local machine.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. Install the necessary dependencies by running `npm install` in your terminal.
 
-## Build
+3. Launch the Angular development server by running `npm start`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+4. Start the Node.js back end server by navigating to the `server` directory and running `npm start`.
 
-## Running unit tests
+5. You're all set! Start exploring the project and building amazing full-stack applications.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Service CRUD Operations
 
-## Running end-to-end tests
+### Listings Service
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The Listings Service is responsible for handling CRUD (Create, Read, Update, Delete) operations related to listings.
 
-## Further help
+#### Get Listings
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![Get Listings](src/assets/images/dashboard.png)
+
+This operation retrieves a list of all listings from the server.
+
+#### Get Listing by ID
+
+![Get Listing by ID](src/assets/images/details.png)
+
+This operation retrieves a single listing by its ID from the server.
+
+#### Add View to Listing
+
+![Add View to Listing](src/assets/images/contact-page.png)
+
+This operation increments the view count of a listing by one.
+
+#### Create Listing
+
+![Create Listing](src/assets/images/create-list.png)
+
+This operation creates a new listing with the provided name, description, and price.
+
+#### Edit Listing
+
+![Edit Listing](src/assets/images/edit-list.png)
+
+This operation updates an existing listing with the provided ID, name, description, and price.
+
+#### Get Listings for User
+
+![Get Listings for User](src/assets/images/my-listing.png)
+
+This operation retrieves a list of listings created by a specific user.
+
+#### Delete Listing
+
+![Delete Listing](src/assets/images/my-listing.png)
+
+This operation deletes a listing with the provided ID.
+
+---
+
+Happy coding!
+
+---
