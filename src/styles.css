@@ -5,19 +5,20 @@ body {
 }
 
 button {
-  background-color: black;
+  background-color: #F6FFF8;
   border: none;
   border-radius: 8px;
-  color: white;
+  color: #6B9080;
   cursor: pointer;
   outline: none;
   padding: 16px;
   font-family: Arial, sans-serif;
   font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 input, textarea {
-  border: 2px solid black;
+  border: 2px solid #EAF4F4;
   border-radius: 8px;
   font-family: Arial, sans-serif;
   font-size: 16px;
@@ -26,7 +27,7 @@ input, textarea {
 
 a {
   text-decoration: none;
-  color: black;
+  color: #F6FFF8;
 }
 
 div {
@@ -34,27 +35,29 @@ div {
 }
 
 #page-wrap {
-  background-color: #EEE;
+  background-color: #FFF8;
   min-height: 100vh;
   padding: 0;
   width: 100vw;
 }
 
 #max-width-column {
-  background-color: white;
+  background-color: #FFF;
   margin: 0 auto;
   max-width: 700px;
   min-height: 100vh;
   padding: 16px;
   position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #top-bar {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #EAF4F4;
 }
 
 #app-heading {
   margin-top: 0;
+  color: rgba(0, 0, 0, 0.45);
 }
 
 #my-listings-button {
@@ -68,11 +71,12 @@ div {
 }
 
 .content-box {
-  background-color: #EEE;
+  background-color: #A4C3B2;
   border-radius: 8px;
   padding: 16px;
   position: relative;
   margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .buttons-container {
