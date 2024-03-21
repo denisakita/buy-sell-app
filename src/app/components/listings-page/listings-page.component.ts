@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Listing} from "../../models/types";
-import {fakeListing} from "../../../assets/mock/fake-data";
+import {ListingsService} from "../../service";
 
 @Component({
   selector: 'app-listings-page',
@@ -10,10 +10,10 @@ import {fakeListing} from "../../../assets/mock/fake-data";
 export class ListingsPageComponent implements OnInit {
   listings: Listing[] = [];
 
-  constructor() {
+  constructor(private listingsService: ListingsService) {
   }
 
   ngOnInit() {
-    this.listings = fakeListing;
+    this.listings = this.listingsService.getListings();
   }
 }
