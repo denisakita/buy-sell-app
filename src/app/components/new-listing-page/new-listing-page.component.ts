@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {Listing} from "../../models/types";
+import {ListingsService} from "../../service";
 
 @Component({
   selector: 'app-new-listing-page',
@@ -9,11 +9,12 @@ import {Listing} from "../../models/types";
   styleUrl: './new-listing-page.component.css'
 })
 export class NewListingPageComponent implements OnInit {
-  listingFG:FormGroup = new FormGroup({})
+  listingFG: FormGroup = new FormGroup({})
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private listingsService: ListingsService
   ) {
   }
 
@@ -26,7 +27,10 @@ export class NewListingPageComponent implements OnInit {
   }
 
   onSubmit() {
-    alert('Saving Changes');
-    this.router.navigateByUrl('/my-listings')
-  };
+    const { name, description, price } = this.listingFG.value;
+    this.listingsService.createListing(name, description, price).subscribe(() => {
+      this.router.navigateByUrl('/my-listings')
+    });
+  }
+
 }

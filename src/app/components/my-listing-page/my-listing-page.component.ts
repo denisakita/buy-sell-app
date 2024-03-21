@@ -19,7 +19,11 @@ export class MyListingPageComponent implements OnInit {
   }
 
   onDeleteClicked(listingId: number) {
-    alert(`Deleting your listing with id ${listingId}`);
-    this.listingsService.deleteListing(listingId);
+    this.listingsService.deleteListing(listingId)
+      .subscribe(() => {
+        this.listings = this.listings.filter(
+          listing => listing.id !== listingId
+        )
+      });
   }
 }

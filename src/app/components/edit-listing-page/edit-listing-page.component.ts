@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Listing} from "../../models/types";
-import {fakeListing} from "../../../assets/mock/fake-data";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ListingsService} from "../../service";
 
 @Component({
   selector: 'app-edit-listing-page',
@@ -16,7 +16,8 @@ export class EditListingPageComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private listingsService: ListingsService
   ) {
   }
 
@@ -27,20 +28,23 @@ export class EditListingPageComponent implements OnInit {
       price: ['', Validators.required]
     });
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    const list = fakeListing.find(listing => listing?.id === id);
-    if (list) {
-      this.listing = list;
-      this.listingFg.patchValue({
-        name: this.listing.name,
-        description: this.listing.description,
-        price: this.listing.price
-      });// Assigning the found listing to the class property
-    }
+    this.listingsService.getListingById(id)
+      .subscribe(listing => {
+        this.listing = listing;
+        this.listingFg.patchValue({
+          name: this.listing.name,
+          description: this.listing.description,
+          price: this.listing.price
+        });
+      });
   }
 
 
   onSubmit() {
-    alert('Saving Changes');
-    this.router.navigateByUrl('/my-listings')
+    const {name, description, price} = this.listingFg.value;
+    this.listingsService.editListing(this.listing.id, name, description, price)
+      .subscribe(() => {
+        this.router.navigateByUrl('/my-listings');
+      })
   };
 }
