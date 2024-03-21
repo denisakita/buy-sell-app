@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ListingsService } from "../../service";
 import {Listing} from "../../models/types";
-import {fakeListing} from "../../../assets/mock/fake-data";
-
 
 @Component({
   selector: 'app-listing-detail-page',
@@ -10,18 +9,27 @@ import {fakeListing} from "../../../assets/mock/fake-data";
   styleUrls: ['./listing-detail-page.component.css']
 })
 export class ListingDetailPageComponent implements OnInit {
-  listing: Listing = new Listing();
+  listing: Listing =new Listing();
+  isLoading: boolean = true;
 
   constructor(
-    private route: ActivatedRoute
-  ) {
-  }
+    private route: ActivatedRoute,
+    private listingsService: ListingsService,
+  ) {}
 
   ngOnInit() {
+    this.isLoading = true;
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    const list = fakeListing.find(listing => listing?.id === id);
-    if (list) {
-      this.listing = list; // Assigning the found listing to the class property
-    }
+    this.listingsService.getListingById(id)
+      .subscribe(
+        (response: any) => {
+          this.listing = response;
+          this.isLoading = false;
+        },
+        (error) => {
+          console.error('Error fetching listing:', error);
+          this.isLoading = false;
+        }
+      );
   }
 }
