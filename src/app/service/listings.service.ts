@@ -45,13 +45,13 @@ export class ListingsService {
   }
 
   createListing(name: string, description: string, price: number): Observable<Listing> {
-    return new Observable<Listing>(observer=>{
-      this.auth.user.subscribe(user=>{
-        user && user.getIdToken().then(token=>{
+    return new Observable<Listing>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
           return this.http.post<Listing>(`${this.apiHost}/api/listings`,
             {name, description, price},
             httpOptionsWithAuthToken(token)
-          ).subscribe(()=>observer.next());
+          ).subscribe(() => observer.next());
         })
       })
     })
@@ -59,9 +59,17 @@ export class ListingsService {
   }
 
   editListing(id: number, name: string, description: string, price: number): Observable<Listing> {
-    return this.http.put<Listing>(`${this.apiHost}/api/listings/${id}`,
-      {name, description, price},
-      httpOptions);
+    return new Observable<Listing>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          return this.http.put<Listing>(`${this.apiHost}/api/listings/${id}`,
+            {name, description, price},
+            httpOptionsWithAuthToken(token))
+            .subscribe(() => observer.next());
+        })
+      })
+    })
+
   }
 
   getListingsForUser(): Observable<Listing[]> {
@@ -71,12 +79,11 @@ export class ListingsService {
           user && user.getIdToken().then(token => {
             if (user && token) {
               this.http.get<Listing[]>(`${this.apiHost}/api/users/${user.uid}/listings`, httpOptionsWithAuthToken(token))
-                .subscribe(listings=>{
+                .subscribe(listings => {
                   observer.next(listings);
                 });
 
-            }
-            else{
+            } else {
               observer.next([]);
             }
           })
@@ -86,7 +93,18 @@ export class ListingsService {
   }
 
   deleteListing(id: number): Observable<Listing> {
-    return this.http.delete<Listing>(`${this.apiHost}/api/listings/${id}`, {});
+    return new Observable<any>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          this.http.delete<Listing>(`${this.apiHost}/api/listings/${id}`,
+            httpOptionsWithAuthToken(token))
+            .subscribe(() => observer.next());
+
+        })
+      })
+
+    })
   }
+
 
 }
