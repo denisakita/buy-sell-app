@@ -46,7 +46,7 @@ export class ListingsService {
   }
 
   getListingsForUser(): Observable<Listing[]> {
-    return this.http.get<Listing[]>(`${this.apiHost}/api/users/12/listings`, {});
+    return this.http.get<Listing[]>(`${this.apiHost}/api/users/3/listings`, {});
   }
 
   deleteListing(id: number): Observable<Listing> {
